@@ -1,0 +1,13 @@
+{
+  "name": "Flowdesk",
+  "short_name": "Flowdesk",
+  "description": "Gerencie projetos com clareza e velocidade",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F9FAFB",
+  "theme_color": "#059669",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
