@@ -119,7 +119,7 @@ export default function AdminLayout() {
       </AnimatePresence>
 
       {/* Main */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 min-w-0 flex flex-col overflow-hidden">
         <header className="h-14 bg-white/5 border-b border-white/10 flex items-center px-4 md:px-6 gap-3 shrink-0">
           <button
             onClick={() => setSidebarOpen(true)}
@@ -135,7 +135,7 @@ export default function AdminLayout() {
           </p>
         </header>
 
-        <main className="flex-1 overflow-y-auto p-4 md:p-6">
+        <main className="flex-1 overflow-y-auto overflow-x-hidden p-4 md:p-6">
           <AnimatePresence mode="wait">
             <motion.div
               key={location.pathname}

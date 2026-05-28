@@ -139,8 +139,8 @@ export default function AdminUsers() {
         <p className="text-sm text-white/40 mt-1">{accounts.length} contas · MRR total: R${totalMRR.toLocaleString('pt-BR')}</p>
       </motion.div>
 
-      <div className="flex items-center gap-3 flex-wrap">
-        <div className="flex-1 min-w-48 relative">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+        <div className="flex-1 min-w-0 relative">
           <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30" />
           <input
             value={query}
@@ -149,7 +149,7 @@ export default function AdminUsers() {
             className="w-full pl-9 pr-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#059669] focus:border-transparent"
           />
         </div>
-        <div className="flex items-center gap-1 bg-white/5 border border-white/10 rounded-lg p-1">
+        <div className="flex items-center gap-1 bg-white/5 border border-white/10 rounded-lg p-1 shrink-0">
           {(['all', 'free', 'pro', 'enterprise'] as const).map(plan => (
             <button
               key={plan}
@@ -169,7 +169,7 @@ export default function AdminUsers() {
         className="bg-white/5 border border-white/10 rounded-xl overflow-hidden"
       >
         <div className="overflow-x-auto">
-          <table className="w-full">
+          <table className="w-full table-fixed">
             <thead>
               <tr className="border-b border-white/10">
                 <th className="px-5 py-3 w-10">
@@ -181,12 +181,12 @@ export default function AdminUsers() {
                   />
                 </th>
                 <th className="text-left px-5 py-3 text-xs font-semibold text-white/40 uppercase tracking-wider">Conta</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-white/40 uppercase tracking-wider">Plano</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-white/40 uppercase tracking-wider">Status</th>
-                <th className="text-right px-4 py-3 text-xs font-semibold text-white/40 uppercase tracking-wider">MRR</th>
-                <th className="text-right px-4 py-3 text-xs font-semibold text-white/40 uppercase tracking-wider">Membros</th>
-                <th className="text-right px-4 py-3 text-xs font-semibold text-white/40 uppercase tracking-wider hidden md:table-cell">Cadastro</th>
-                <th className="px-4 py-3" />
+                <th className="text-left px-4 py-3 text-xs font-semibold text-white/40 uppercase tracking-wider w-20">Plano</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-white/40 uppercase tracking-wider w-24">Status</th>
+                <th className="text-right px-4 py-3 text-xs font-semibold text-white/40 uppercase tracking-wider w-20">MRR</th>
+                <th className="text-right px-4 py-3 text-xs font-semibold text-white/40 uppercase tracking-wider w-20">Membros</th>
+                <th className="text-right px-4 py-3 text-xs font-semibold text-white/40 uppercase tracking-wider w-24 hidden md:table-cell">Cadastro</th>
+                <th className="px-4 py-3 w-12" />
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5">
@@ -209,12 +209,12 @@ export default function AdminUsers() {
                         onClick={e => e.stopPropagation()}
                       />
                     </td>
-                    <td className="px-5 py-3.5">
+                    <td className="px-5 py-3.5 max-w-0">
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-xs font-bold text-white shrink-0">
                           {account.avatar}
                         </div>
-                        <div className="min-w-0">
+                        <div className="min-w-0 flex-1">
                           <p className="text-sm font-medium text-white truncate">{account.name}</p>
                           <p className="text-xs text-white/30 truncate">{account.email}</p>
                         </div>

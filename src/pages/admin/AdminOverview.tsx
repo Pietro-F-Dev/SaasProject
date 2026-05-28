@@ -118,7 +118,7 @@ export default function AdminOverview() {
             <div className={`w-10 h-10 rounded-lg ${stat.bg} flex items-center justify-center mb-3`}>
               <stat.icon size={20} className={stat.color} />
             </div>
-            <p className="text-2xl font-bold text-white">
+            <p className="text-2xl font-bold text-white overflow-hidden text-ellipsis whitespace-nowrap">
               <AnimatedCounter to={stat.to} prefix={stat.prefix} suffix={stat.suffix} />
             </p>
             <p className="text-xs text-white/40 mt-0.5">{stat.label}</p>
