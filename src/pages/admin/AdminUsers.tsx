@@ -139,8 +139,8 @@ export default function AdminUsers() {
         <p className="text-sm text-white/40 mt-1">{accounts.length} contas · MRR total: R${totalMRR.toLocaleString('pt-BR')}</p>
       </motion.div>
 
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-        <div className="flex-1 min-w-0 relative">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+        <div className="relative sm:flex-1">
           <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30" />
           <input
             value={query}
@@ -169,7 +169,7 @@ export default function AdminUsers() {
         className="bg-white/5 border border-white/10 rounded-xl overflow-hidden"
       >
         <div className="overflow-x-auto">
-          <table className="w-full table-fixed">
+          <table className="w-full">
             <thead>
               <tr className="border-b border-white/10">
                 <th className="px-5 py-3 w-10">
@@ -209,12 +209,12 @@ export default function AdminUsers() {
                         onClick={e => e.stopPropagation()}
                       />
                     </td>
-                    <td className="px-5 py-3.5 max-w-0">
+                    <td className="px-5 py-3.5">
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-xs font-bold text-white shrink-0">
                           {account.avatar}
                         </div>
-                        <div className="min-w-0 flex-1">
+                        <div className="min-w-0">
                           <p className="text-sm font-medium text-white truncate">{account.name}</p>
                           <p className="text-xs text-white/30 truncate">{account.email}</p>
                         </div>
