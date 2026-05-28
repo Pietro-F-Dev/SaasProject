@@ -6,7 +6,7 @@ Plataforma SaaS de gerenciamento de projetos e tarefas com kanban, relatórios e
 
 FlowDesk é uma aplicação full-stack construída como projeto de portfólio. Simula um produto SaaS real com autenticação, planos de assinatura, dashboard analítico, kanban com drag-and-drop, gerenciamento de equipes e painel de administração com dados reais do banco de dados.
 
-**Demo:** [flowdesk.vercel.app](https://flowdesk.vercel.app)  
+**Demo:** [flowdesk.vercel.app](https://saas-flowdesk.vercel.app)  
 **API:** [flowdesk-api.onrender.com](https://flowdesk-api.onrender.com)
 
 ---
