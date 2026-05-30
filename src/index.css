@@ -21,3 +21,8 @@ body {
   width: 100%;
   text-align: left;
 }
+
+.recharts-wrapper,
+.recharts-wrapper svg {
+  overflow: hidden !important;
+}
