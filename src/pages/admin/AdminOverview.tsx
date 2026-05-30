@@ -42,26 +42,30 @@ function BarTooltip({ active, payload, label }: { active?: boolean; payload?: { 
   )
 }
 
+const ptBR = new Intl.NumberFormat('pt-BR')
+
 function AnimatedCounter({ to, prefix = '', suffix = '' }: { to: number; prefix?: string; suffix?: string }) {
   const [value, setValue] = useState(0)
   const ref = useRef<HTMLSpanElement>(null)
   const isInView = useInView(ref, { once: true })
 
   useEffect(() => {
-    if (!isInView || to === 0) { setValue(to); return }
-    const duration = 1200
-    const steps = 60
-    const increment = to / steps
-    let current = 0
-    const timer = setInterval(() => {
-      current += increment
-      if (current >= to) { setValue(to); clearInterval(timer) }
-      else setValue(Math.round(current))
-    }, duration / steps)
-    return () => clearInterval(timer)
+    if (!isInView) return
+    if (to === 0) { setValue(0); return }
+    const duration = 1000
+    const start = performance.now()
+    let rafId: number
+    const tick = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1)
+      const eased = 1 - Math.pow(1 - progress, 3)
+      setValue(Math.round(eased * to))
+      if (progress < 1) rafId = requestAnimationFrame(tick)
+    }
+    rafId = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(rafId)
   }, [isInView, to])
 
-  return <span ref={ref}>{prefix}{value.toLocaleString('pt-BR')}{suffix}</span>
+  return <span ref={ref}>{prefix}{ptBR.format(value)}{suffix}</span>
 }
 
 export default function AdminOverview() {
