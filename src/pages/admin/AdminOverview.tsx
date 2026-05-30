@@ -133,12 +133,13 @@ export default function AdminOverview() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <motion.div
           initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.2 }}
-          className="lg:col-span-2 bg-white/5 border border-white/10 rounded-xl p-5"
+          className="lg:col-span-2 bg-white/5 border border-white/10 rounded-xl p-5 overflow-hidden"
         >
           <h2 className="font-semibold text-white mb-1 text-sm">Novos cadastros</h2>
           <p className="text-xs text-white/40 mb-4">Últimos 6 meses</p>
+          <div className="overflow-hidden">
           <ResponsiveContainer width="100%" height={160}>
-            <AreaChart data={stats?.monthlySignups ?? []} margin={{ top: 0, right: 0, left: -20, bottom: 0 }}>
+            <AreaChart data={stats?.monthlySignups ?? []} margin={{ top: 4, right: 4, left: -10, bottom: 0 }}>
               <defs>
                 <linearGradient id="adminAreaGrad" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor="#059669" stopOpacity={0.3} />
@@ -152,16 +153,18 @@ export default function AdminOverview() {
               <Area type="monotone" dataKey="cadastros" stroke="#059669" strokeWidth={2.5} fill="url(#adminAreaGrad)" dot={{ fill: '#059669', r: 3.5, strokeWidth: 2, stroke: '#0F172A' }} activeDot={{ r: 5.5, fill: '#059669', stroke: '#0F172A', strokeWidth: 2.5 }} />
             </AreaChart>
           </ResponsiveContainer>
+          </div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.25 }}
-          className="bg-white/5 border border-white/10 rounded-xl p-5"
+          className="bg-white/5 border border-white/10 rounded-xl p-5 overflow-hidden"
         >
           <h2 className="font-semibold text-white mb-1 text-sm">Distribuição de planos</h2>
           <p className="text-xs text-white/40 mb-4">Total de contas</p>
-          <ResponsiveContainer width="100%" height={120}>
-            <BarChart data={stats?.planDist ?? []} margin={{ top: 0, right: 0, left: -20, bottom: 0 }} barSize={32}>
+          <div className="overflow-hidden">
+          <ResponsiveContainer width="100%" height={140}>
+            <BarChart data={stats?.planDist ?? []} margin={{ top: 16, right: 4, left: -5, bottom: 0 }} barSize={32}>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" vertical={false} />
               <XAxis dataKey="name" tick={{ fontSize: 10, fill: 'rgba(255,255,255,0.3)' }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fontSize: 10, fill: 'rgba(255,255,255,0.3)' }} axisLine={false} tickLine={false} allowDecimals={false} />
@@ -172,6 +175,7 @@ export default function AdminOverview() {
               </Bar>
             </BarChart>
           </ResponsiveContainer>
+          </div>
           <div className="space-y-2 mt-3">
             {(stats?.planDist ?? []).map(p => (
               <div key={p.name} className="flex items-center justify-between text-xs">
